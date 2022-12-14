@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+<h1 class="d-flex  container justify-content-left"style="background-color:#a1a0a0;">Users</h1>
+<div class="container " style="background-color:#a1a0a0;">
+<table>
+  <thead>
+    <tr>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.each do |user| %>
+    <%if !(user==current_user)%>
+      <section>
+      <tr>
+      <td><%=user.first_name+" "+user.last_name%></td>
+       <td ><%= button_to "#{user.username} ", user_path(user),method: :get,class: "btn btn-info btn-sm" %></td>
+      </tr>
+   
+     
+      </section>
+      <%end%>
+    <% end %>
+  </tbody>
+</table>
+<br>
+</div>
+

@@ -1,0 +1,10 @@
+ 
+    <div>
+<%= form_with( model: [ @blog.comment.build],url: blog_comment_index_path(@blog),method:  :post )do |form| %>
+    <%= form.text_area :body %>
+    <%= form.submit 'comment'%>
+ 
+<% end %>
+    </div>
+
+

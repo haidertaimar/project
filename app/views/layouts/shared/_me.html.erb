@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-sx-12">
+            <div class="current-profile">
+              <img src="https://bootdey.com/img/Content/user_3.jpg" class="img-fluid" alt="...">
+            
+                <div class="user-details">
+                    <h4 class="user-name"><%=user.first_name+" "+user.last_name%></h4>
+                </div>
+                <div class="social-list">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-3 center-align-text">
+                                    <h3><%=@user.blog.count%></h3>
+                                    <small>Posts</small>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-3 center-align-text">
+                                    <h3><%=@user.followers.count%></h3>
+                                    <small>Followers</small>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-3 center-align-text">
+                                    <h3><%=@user.following.count%></h3>
+                                    <small>Following</small>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-3 center-align-text">
+                                     <%if @user==current_user%>
+                                     <%=button_to 'Edit profile',edit_user_path(@user),method: :get,class: "btn btn-danger"%>                            
+                                    <%else%>
+                                        <%=link_to'Follow',user_relationships_path(@user),method: :post,class: "btn btn-danger" unless @relation.present?%>
+                                        <%=link_to'unfollow',relationship_path(@relation.id),method: :delete,class: "btn btn-danger" if @relation.present?%>
+                                    <%end%>
+                                </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-3 center-align-text">
+                                   
+                                </div>
+
+                                  
+                            </div>
+                            <div>
+                                     <p id="notice"><%= notice %></p>
+                                        <h1 class="d-flex  container justify-content-center"style="background-color:#a1a0a0;">Posts</h1>
+                                        <div class="container " style="background-color:#a1a0a0;">
+                                     <table>
+                                            <thead>
+                                                <tr>
+                                                <th>Title</th>
+                                                <th>Detials</th>
+                                                <th colspan="3"></th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <% blog.each do |blog| %>
+                                                <tr>
+                                                    <td><%= blog.title %></td>
+                                                    <td><%=  blog.detials %></td>
+                                                    <td style="background-color:  ;"><%= button_to 'Show', blog,method: :get,class: "btn btn-info btn-sm" %></td>
+                                                    <%if user==current_user%>
+                                                    <td style="background-color:  ;"><%= button_to 'Edit', edit_blog_path(blog),method: :get,class: "btn btn-primary btn-sm" %></td>
+                                                    <td ><%= button_to 'Delete', blog, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger btn-sm" %></td>
+                                                     <%end%>
+                                                </tr>
+                                                <% end %>
+                                            </tbody>
+                                         </table>
+                                         </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

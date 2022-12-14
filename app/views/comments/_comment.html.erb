@@ -1,0 +1,12 @@
+
+
+<div style="font-weight: bold"><%=comment.user.username%></div>
+<%=comment.body%>
+<div class="d-flex flex-row-reverse">
+        <span class="p-2">
+        <%= link_to 'Delete', blog_comment_path(comment.blog,comment), method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-secondary btn-sm text-white",style: "text-color:red;" %>
+        </span>
+ </div>
+<hr>
+
+

@@ -1,0 +1,41 @@
+<nav class="navbar navbar-light navbar-expand" style="background-color:#01cff8;">
+  <div class="navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-3 mt-lg-2">
+      <li class="nav-item active">
+        <a ><%=link_to 'Blogs',blogs_path%></a>
+      </li>
+      <li class="nav-item ">
+       <a ><%=link_to 'My profile',user_myprofile_path(@user)%></a>
+      </li>
+      
+      <li class="nav-item">
+          <a ><%=link_to 'Timeline' ,timeline_path%></a>
+      </li>
+      <li class="nav-item ">
+        <a ><%=link_to 'Search' ,users_path%></a>
+      </li>
+         <li class="nav-item ">
+        
+      
+           <small><%if current_user%>
+           <%=current_user.email%>
+           <%end%>
+           
+           </small>
+      </li>
+        
+    </ul>
+  </div>
+
+      <div>
+        <a>
+            <%if user_signed_in?%>
+              <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+            <%else%>
+
+            <%=button_to 'Login',new_user_session_path%>
+                <%end%>
+            </a>
+
+      </div> 
+</nav>

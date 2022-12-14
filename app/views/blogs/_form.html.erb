@@ -1,0 +1,47 @@
+
+
+<section class="vh-50" style="background-color: #f4f5f7;">
+  <div class="container py-4 profileset ">
+    <div class="row">
+      <div class="col-12">
+          <div class="row d-flex justify-content-center">
+            <div class="col-6 gradient-custom text-center text-white "
+              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+        
+              <%= form_with(model: blog) do |form| %>
+                <% if blog.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(blog.errors.count, "error") %> Prohibited this Post from being saved:</h2>
+
+                    <ul>
+                      <% blog.errors.each do |error| %>
+                        <li style="color: black;"><%= error.full_message %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+                <div class="field justify-content-right">
+                  <%= form.label :title %>
+                  <br>
+                  <%= form.text_field :title %>
+                </div>
+
+                <div class="field">
+                  <%= form.label :detials %>
+                  <br>
+                  <%=  form.rich_text_area :detials%>
+                </div>
+               
+
+                <div class="actions">
+                  <%= form.submit %>
+                </div>
+              
+              <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>

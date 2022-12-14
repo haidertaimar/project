@@ -1,0 +1,35 @@
+  <p id="notice"><%= notice %></p>
+  <div class="container">
+      <h1 style="text-align: center; background-color:#0f97ec;">Showing Post</h1>
+      <br>
+  <div class="border border-primary">
+       <p>
+          <h6>Title:</h6>
+          <h4><%= @blog.title %> </h4>
+       </p>
+
+       <p>
+          <h6>Detials:</h6>
+          <h4> <%=  @blog.detials %> </h4>
+       </p>
+     <div class="d-flex flex-row-reverse">
+         <small class="p-2">
+         Created at : <%=@blog.created_at%>
+         <br>
+         Updated at : <%=@blog.updated_at%></small>
+      </div>
+   </div>
+
+
+  <br>
+  <div class="border border-info" style="width:90%">
+
+        <%=render  @blog.comment%>
+        <h5>Add Comment :</h5>
+        <%=render 'comments/form',locals: {blog: @blog}%>
+
+  </div>
+      <br>
+      <%= link_to 'Edit', edit_blog_path(@blog) %> |
+      <%= link_to 'Back', blogs_path %>
+  </div>

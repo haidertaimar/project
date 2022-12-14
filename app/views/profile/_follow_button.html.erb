@@ -1,0 +1,7 @@
+<div>
+<%if following?(user)%>
+<%=button_to 'unfollow',profile_unfollow_path(id: user.id),method: :delete%>
+<%else%>
+<%=button_to 'follow',profile_follow_path(id: user.id),method: :delete%>
+<%end%>
+</div>
